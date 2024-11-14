@@ -26096,8 +26096,9 @@ oyW2KLf7AAAAAElFTkSuQmCC" width="720"/>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="n">diabetes_imputed_scaled</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">scale</span><span class="p">(</span><span class="n">diabetes_imputed</span><span class="p">))</span>
-<span class="n">diabetes_imputed_scaled</span><span class="o">$</span><span class="n">Outcome</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">diabetes_imputed</span><span class="o">$</span><span class="n">Outcome</span>
+<div class="highlight hl-r"><pre><span></span><span class="n">diabetes_imputed_scaled</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">scale</span><span class="p">(</span><span class="n">diabetes_imputed</span><span class="p">[</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="o">!</span><span class="nf">names</span><span class="p">(</span><span class="n">diabetes_imputed</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="s">"Outcome"</span><span class="p">]))</span>
+<span class="n">diabetes_imputed_scaled</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">diabetes_imputed_scaled</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">    </span><span class="nf">mutate</span><span class="p">(</span><span class="n">Outcome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diabetes_imputed</span><span class="o">$</span><span class="n">Outcome</span><span class="p">)</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">diabetes_imputed_scaled</span><span class="p">)</span>
 </pre></div>
 </div>
